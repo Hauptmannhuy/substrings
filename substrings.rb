@@ -1,16 +1,20 @@
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
-def substrings(word, dictionary)
+def substrings(string, dictionary)
   array = []
-  for i in dictionary do
-    is_substring = word[i]
-    if is_substring != nil
-      array << is_substring
+  string = string.downcase.split(' ')
+ string.each do |word|
+  dictionary.each do |word_dic|
+  is_substring = word[word_dic]
+  if is_substring != nil
+    array << is_substring
   end
- end
- array.reduce(Hash.new(0)) do |word, occurences|
-  word[occurences] += 1
-  word
+  end
+end
+ 
+ array.reduce(Hash.new(0)) do |substring, occurences|
+  substring[occurences] += 1
+  substring
 end
 end
-dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+substrings("Howdy partner, sit down! How's it going?", dictionary)
